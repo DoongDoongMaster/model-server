@@ -1,0 +1,41 @@
+services:
+  redisai:
+    container_name: redisai
+    image: redislabs/redisai:edge-gpu-bionic
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=1
+    ports:
+      - 6379:6379
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+              device_ids: ["1"]
+
+  fastapi:
+    container_name: fastapi
+    build:
+      context: ..
+      dockerfile: model-server/Dockerfile
+    command: gunicorn model-server.app.main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --access-logfile - --log-level info --bind 0.0.0.0:80
+    ports:
+      - 80:80
+    env_file:
+      - .env
+    volumes:
+      - .:/home/code/model-server
+      - ../automatic-drum-transcription:/home/code/automatic-drum-transcription
+      - ../optical-music-recognition:/home/code/optical-music-recognition
+    entrypoint:
+      - sh
+      - model-server/scripts/docker_entrypoint.sh
+
+  ngrok:
+    container_name: ngrok
+    image: ngrok/ngrok:latest
+    env_file:
+      - .env
+    network_mode: host
+    command: ["http", "80"]
