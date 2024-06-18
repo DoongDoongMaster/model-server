@@ -19,7 +19,7 @@ services:
     build:
       context: ..
       dockerfile: model-server/Dockerfile
-    command: gunicorn model-server.app.main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --access-logfile - --log-level info --bind 0.0.0.0:80
+    command: gunicorn app.main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --access-logfile - --log-level info --bind 0.0.0.0:80
     ports:
       - 80:80
     env_file:
@@ -30,7 +30,7 @@ services:
       - ../optical-music-recognition:/home/code/optical-music-recognition
     entrypoint:
       - sh
-      - model-server/scripts/docker_entrypoint.sh
+      - scripts/docker_entrypoint.sh
 
   ngrok:
     container_name: ngrok

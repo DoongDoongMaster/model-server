@@ -8,4 +8,4 @@ RUN pip install --upgrade pip
 RUN pip install --no-cache-dir --upgrade -r ./requirements.txt
 
 
-WORKDIR /home/code
+WORKDIR /home/code/model-server
