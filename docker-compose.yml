@@ -19,7 +19,8 @@ services:
     build:
       context: ..
       dockerfile: model-server/Dockerfile
-    command: gunicorn app.main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --access-logfile - --log-level info --bind 0.0.0.0:80
+    # command: uvicorn app.main:app --host 0.0.0.0 --port 8080 --reload
+    command: gunicorn model-server.app.main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --access-logfile - --log-level info --bind 0.0.0.0:80
     ports:
       - 80:80
     env_file:
@@ -30,7 +31,14 @@ services:
       - ../optical-music-recognition:/home/code/optical-music-recognition
     entrypoint:
       - sh
-      - scripts/docker_entrypoint.sh
+      - model-server/scripts/docker_entrypoint.sh
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+              device_ids: ["0"]
 
   ngrok:
     container_name: ngrok

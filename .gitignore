@@ -33,3 +33,7 @@ archive.zip
 *.pem
 *.env
 *.env.*
+
+# model inference result
+predict-result/
+uploaded_files
