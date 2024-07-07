@@ -1,4 +1,4 @@
-![ClipWindowsGIF](https://github.com/DoongDoongMaster/model-server/assets/68186101/b3f084ab-7360-4883-9828-e93cc32bc39e)# Model server
+# Model server
 > 모델을 서빙하는 서버
 
 ## API Docs
