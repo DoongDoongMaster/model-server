@@ -11,9 +11,19 @@
 <br>
 
 ## Preparation
-- clone ADT & OMR repository
-  - [ADT repo](https://github.com/DoongDoongMaster/automatic-drum-transcription)
-  - [OMR repo](https://github.com/DoongDoongMaster/optical-music-recognition)
+- clone ADT & OMR repository (현재 레포를 클론받은 위치랑 똑같은 곳에서)
+  - clone ADT repository
+    ```
+    git clone https://github.com/DoongDoongMaster/automatic-drum-transcription
+    ```
+    - [ADT repo](https://github.com/DoongDoongMaster/automatic-drum-transcription)
+   
+  - clone OMR repository
+    ```
+    git clone https://github.com/DoongDoongMaster/optical-music-recognition
+    ```
+    - [OMR repo](https://github.com/DoongDoongMaster/optical-music-recognition)
+    
   - ‼️ 주의 : 아래와 같이 폴더 구조를 맞춰야 합니다.
     ```shell
     ...
