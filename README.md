@@ -1,29 +1,27 @@
-# Model server
+![ClipWindowsGIF](https://github.com/DoongDoongMaster/model-server/assets/68186101/b3f084ab-7360-4883-9828-e93cc32bc39e)# Model server
 > 모델을 서빙하는 서버
 
 ## API Docs
-[📌 API docs](http://43.201.117.55/docs)
+### 1. POST `/adt/predict`
+- ADT 모델의 예측 요청을 보내는 API
 
-### 1. GET `/models/adt/[init|min|max]-bound`
-- 채점을 할 때, 연주의 delay를 고려하여 박자를 채점하기 위해 사용되는 상수값 GET API
-
-![image](https://github.com/DoongDoongMaster/server/assets/68186101/a5ffae45-cddf-4891-897d-1acbaa74c18b)
-
-### 2. POST `/models/adt/predict`
-- 모델 서버에 ADT 모델 예측 요청을 보내는 API
-
-![image](https://github.com/DoongDoongMaster/server/assets/68186101/cc028982-eedb-4ea0-ad09-fdee9bdfbeea)
-
-
-### 3. POST `/models/omr/predict`
-- 모델 서버에 OMR 모델 예측 요청을 보내는 API
-
-![image](https://github.com/DoongDoongMaster/server/assets/68186101/f81e104c-ae9c-4f4b-860a-29fa6ff0ecd9)
-
+### 2. POST `/omr/predict`
+- OMR 모델의 예측 요청을 보내는 API
 
 <br>
 
 ## Preparation
+- clone ADT & OMR repository
+  - [ADT repo](https://github.com/DoongDoongMaster/automatic-drum-transcription)
+  - [OMR repo](https://github.com/DoongDoongMaster/optical-music-recognition)
+  - ‼️ 주의 : 아래와 같이 폴더 구조를 맞춰야 합니다.
+    ```shell
+    ...
+    ├── model-server
+    ├── automatic-drum-transcription
+    ├── optical-music-recognition
+    ```
+
 - install docker engine
   ```shell
   # Add Docker's official GPG key:
